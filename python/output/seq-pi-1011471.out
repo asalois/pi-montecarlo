@@ -1,0 +1,5 @@
+Samples= 8192000000.0, my_pi= 3.1415687236, diff=0.0000239300
+
+NOTICE: we ran 10 times less throws
+time elapsed 2883 seconds
+time elapsed if same throws 28830 
