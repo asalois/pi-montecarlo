@@ -1,16 +1,30 @@
 program calc
   implicit none
   integer :: i
-  real :: pi
+  integer :: hits
+  integer :: trials
+  real :: mypi
+  real :: r
+  real :: x
+  real :: y
   real :: realpi
   real :: darts
-  real :: hits
-  real :: trials
-  realpi = 3.1415927
 
-  do i = 1, 10
-    print *, 'i= ', i
+  realpi = 3.1415927
+  trials = 1000000
+  hits = 0
+
+  do i = 1, trials
+    call random_number(x)
+    call random_number(y)
+    r = x**2 + y**2
+    if (r <= 1) then
+      hits = hits + 1
+    end if
   end do
-  print *, 'Actual Pi= ', realpi
+
+  mypi = 4 * real(hits) / real(trials)
+  
+  print *, 'Pi= ', mypi
 
 end program calc
