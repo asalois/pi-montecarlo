@@ -29,7 +29,7 @@ program calc
   end do
 
   ! calc pi by 4 times the ratio of hits to trials 
-  mypi = 4 * real(hits) / real(trials)
+  mypi = 4.0 * real(hits) / real(trials)
   
   print *, 'Pi= ', mypi
 
