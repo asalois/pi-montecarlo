@@ -12,8 +12,8 @@ program calc
   real :: darts
 
   ! set some variables
-  realpi = 3.1415927
-  trials = 1000000
+  realpi = 3.14159265358979323846264338327950288419939937
+  trials = 10000000
   hits = 0
 
   ! throw one dart at the board per trial
