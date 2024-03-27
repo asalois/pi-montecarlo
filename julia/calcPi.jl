@@ -25,7 +25,7 @@ function sim(throws, seed)
   @printf("Throws = %d \n", throws)
   @printf("myPi = %f \n", myPi)
   @printf("Error = %f \n", error)
-  @printf("%f,%f,%d,%d\n", abs(error), myPi, throws, seed)
+  @printf("%f,%f,%d,%d\n", abs(error), myPi, log(throws), seed)
 end
 
 @time sim(trials, inSeed)
