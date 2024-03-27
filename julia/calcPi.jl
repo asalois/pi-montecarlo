@@ -17,7 +17,7 @@ for i = 1:throws
 end
 
 myPi = 4 * hits / throws
-error = (pi - myPi) / pi
+error = 100 * (pi - myPi) / pi
 
 @printf("Throws = %d \n", throws)
 @printf("myPi = %f \n", myPi)
