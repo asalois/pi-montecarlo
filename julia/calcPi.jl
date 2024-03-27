@@ -21,12 +21,12 @@ function sim(throws, seed)
   
   myPi = 4 * hits / throws
   error = 100 * (pi - myPi) / pi
-  
-  @printf("Throws = %d \n", throws)
-  @printf("myPi = %f \n", myPi)
-  @printf("Error = %f \n", error)
-  @printf("%f,%f,%d,%d\n", abs(error), myPi, log(throws), seed)
+  return myPi, error
 end
 
-@time sim(trials, inSeed)
-sim(trials, inSeed)
+#@time sim(trials, inSeed)
+s myPi error = @timed sim(trials, inSeed)
+@printf("Throws per Second = %4.5g", trials / s.time)
+@printf("%1.10f,%g,%d,%d", myPi, error, log(trials), inSeed)
+#@timev sim(trials, inSeed)
+#sim(trials, inSeed)
