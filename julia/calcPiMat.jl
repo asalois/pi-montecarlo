@@ -27,6 +27,6 @@ end
 s = @timed sim(trials, inSeed, batchSize)
 #@printf("Throws per Second = %g\n", trials / s.time)
 #print("myPi,logerror,time,log(trials),seed,tps\n")
-@printf("%1.10f,%1.10f,%f,%d,%d,%g\n", s.value[1], log10(s.value[2]), s.time, log10(total), inSeed, total / s.time)
+@printf("%1.10f,%1.10f,%f,%d,%d,%g\n", s.value[1], log10(abs(s.value[2])), s.time, log10(total), inSeed, total / s.time)
 #@timev sim(trials, inSeed)
 #sim(trials, inSeed)
