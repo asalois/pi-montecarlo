@@ -1,5 +1,4 @@
-using Printf
-using Random
+using Printf, Random
 
 # inputs
 inSeed = parse(Int64, ARGS[1])
@@ -25,8 +24,9 @@ function sim(throws, seed)
 end
 
 #@time sim(trials, inSeed)
-s myPi error = @timed sim(trials, inSeed)
-@printf("Throws per Second = %4.5g", trials / s.time)
-@printf("%1.10f,%g,%d,%d", myPi, error, log(trials), inSeed)
+s = @timed sim(trials, inSeed)
+#@printf("Throws per Second = %g\n", trials / s.time)
+print("myPi,%error,time,log(trials),seed,tps\n")
+@printf("%1.10f,%1.10f,%f,%d,%d,%g\n", s.value[1], s.value[2], s.time, log(trials), inSeed, trials / s.time)
 #@timev sim(trials, inSeed)
 #sim(trials, inSeed)
