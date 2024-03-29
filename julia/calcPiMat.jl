@@ -2,7 +2,7 @@ using Printf, Random
 
 # inputs
 inSeed = parse(Int64, ARGS[1])
-trials = 100_000
+trials = 1_000_000
 batchSize = 100_000
 total = trials * batchSize
 
@@ -19,14 +19,14 @@ function sim(throws, seed, darts)
   end
   
   myPi = 4 * hits / (throws * darts)
-  error = 100 * (pi - myPi) / pi
+  error = (pi - myPi) / pi
   return myPi, error
 end
 
 #@time sim(trials, inSeed)
 s = @timed sim(trials, inSeed, batchSize)
 #@printf("Throws per Second = %g\n", trials / s.time)
-#print("myPi,%error,time,log(trials),seed,tps\n")
-@printf("%1.10f,%1.10f,%f,%d,%d,%g\n", s.value[1], s.value[2], s.time, log10(total), inSeed, total / s.time)
+#print("myPi,logerror,time,log(trials),seed,tps\n")
+@printf("%1.10f,%1.10f,%f,%d,%d,%g\n", s.value[1], log10(s.value[2]), s.time, log10(total), inSeed, total / s.time)
 #@timev sim(trials, inSeed)
 #sim(trials, inSeed)
