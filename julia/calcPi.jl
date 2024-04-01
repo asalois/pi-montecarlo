@@ -5,7 +5,7 @@ inSeed = parse(Int64, ARGS[1])
 trials = 10_000_000_000
 
 
-function sim(throws, seed)
+function runSim(throws, seed)
   hits = 0
   rng = Xoshiro(seed)
 
@@ -24,9 +24,11 @@ function sim(throws, seed)
 end
 
 #@time sim(trials, inSeed)
-s = @timed sim(trials, inSeed)
+sim = @timed runSim(trials, inSeed)
 #@printf("Throws per Second = %g\n", trials / s.time)
 #print("myPi,logerror,time,log(trials),seed,tps\n")
-@printf("%1.10f,%2.9f,%f,%d,%d,%g\n", s.value[1], log10(abs(s.value[2])), s.time, log10(trials), inSeed, trials / s.time)
+@printf("%1.10f,%2.9f,%f,%d,%d,%g\n",
+        sim.value[1], abs(log10(abs(sim.value[2]))), sim.time,
+        log10(trials), inSeed, trials / sim.time)
 #@timev sim(trials, inSeed)
 #sim(trials, inSeed)
