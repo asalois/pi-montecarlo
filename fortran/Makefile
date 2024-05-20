@@ -1,6 +1,6 @@
 # Configuration settings
 FC := gfortran
-FFLAGS := -lm
+FFLAGS := -Ofast -march=native
 
 EXE := calc.o
 SRC := calc.f90
