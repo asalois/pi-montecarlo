@@ -2,7 +2,7 @@ using Printf, Random
 
 # inputs
 inSeed = parse(Int64, ARGS[1])
-trials = 10_000_000_000
+trials = 1_000_000_000
 
 
 function runSim(throws, seed)
