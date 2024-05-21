@@ -13,7 +13,7 @@ program calc
 
   ! set some variables
   realpi = 3.14159265358979323846264338327950288419939937
-  trials = 10000000
+  trials = 1000000000
   hits = 0
 
   ! throw one dart at the board per trial
