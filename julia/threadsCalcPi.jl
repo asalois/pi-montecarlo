@@ -15,26 +15,18 @@ function throw(rng)
   end
 end
 
-function setOfThrows(throws, rng)
-  hits = 0
-  for i = 1:length(throws)
-    didHit = throw(rng)
-    if didHit
-      hits += 1
-    end
-  end
-  return hits
-end
 
 function runSim(throws, seed)
   hits = 0
   rng = Xoshiro(seed)
 
-  for i = 1:4
-    task = Threads.@spawn setOfThrows(throws/4, rng)
+  Threads.@threads for i = 1:throws
+    didHit = throw(rng)
+    if didHit 
+      hits += 1
+    end
   end
   
-  hits = fetch.(task)
   myPi = 4 * hits / throws
   error = (pi - myPi) / pi
   return myPi, error
