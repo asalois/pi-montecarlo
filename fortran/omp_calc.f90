@@ -1,4 +1,5 @@
 program calc
+  use omp_lib
   implicit none
   ! declare variables
   integer :: i
@@ -16,6 +17,12 @@ program calc
   trials = 1000000000
   hits = 0
 
+  ! set the number of threads
+  call omp_set_num_threads(8)
+
+  ! throw one dart at the board per trial
+  !$omp parallel do reduction(+:hits)
+  
   ! throw one dart at the board per trial
   do i = 1, trials
     call random_number(x)
@@ -27,6 +34,7 @@ program calc
       hits = hits + 1
     end if
   end do
+  !$omp end parallel do
 
   ! calc pi by 4 times the ratio of hits to trials 
   mypi = 4.0 * real(hits) / real(trials)

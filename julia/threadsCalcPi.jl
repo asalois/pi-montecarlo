@@ -4,16 +4,24 @@ using Printf, Random
 inSeed = parse(Int64, ARGS[1])
 trials = 1_000_000_000
 
+function throw(rng)
+  x = rand(rng)
+  y = rand(rng)
+  r = x^2 + y^2
+  if r <= 1
+    return true
+  else
+    return false
+  end
+end
 
 function runSim(throws, seed)
   hits = 0
   rng = Xoshiro(seed)
 
-  for i = 1:throws
-    x = rand(rng)
-    y = rand(rng)
-    r = x^2 + y^2
-    if r <= 1
+  Threads.@threads for i = 1:throws
+    didHit = throw(rng)
+    if didHit
       hits += 1
     end
   end
