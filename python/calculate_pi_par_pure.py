@@ -1,6 +1,5 @@
 import random
 import math
-import numpy as np
 from multiprocessing import Pool
 
 procs = 5  # number of cpus
@@ -8,13 +7,14 @@ ndarts = 8192  # number of darts
 nthrows = 100_000  # number of throws
 nsamples = nthrows * ndarts  # total
 
-
 def throw_darts(run):
-    darts = np.random.rand(ndarts, 2)  # Make a random matrix with ndarts by 2
-    radi = np.sum(np.square(darts), axis=1)  # square each element of matrix
-    hits = np.sum(radi < 1)  # count the daarts in the circle
+    hits = 0  # start with no hits
+    for i in range(int(ndarts)):
+        x = random.random()
+        y = random.random()
+        if (x**2 + y**2) < 1.0:  # if the dart is in the circle
+            hits += 1
     return hits
-
 
 def monte_carlo_pi_pool():
     hits = 0

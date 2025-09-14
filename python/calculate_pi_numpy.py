@@ -2,7 +2,7 @@ import math
 import numpy as np
 
 ndarts = 8192  # number of darts to per throw
-nthrows = 10_000_000  # number of throws
+nthrows = 100_000  # number of throws
 nsamples = nthrows * ndarts  # total number of darts thrown
 
 

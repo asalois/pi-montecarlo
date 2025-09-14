@@ -2,7 +2,7 @@ import random
 import math
 
 ndarts = 8192  # number of darts to per throw
-nthrows = 1_000_000  # number of throws
+nthrows = 10_000  # number of throws
 nsamples = nthrows * ndarts  # total number of darts thrown
 
 

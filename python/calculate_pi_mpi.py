@@ -11,7 +11,7 @@ rank = comm.Get_rank()
 
 
 ndarts = 8192  # number of darts
-nthrows = 10_000_000  # number of throws
+nthrows = 100_000  # number of throws
 throws_per_task = math.ceil(nthrows / size)  # for each task throw this much
 nsamples = throws_per_task * size * ndarts  # total
 
