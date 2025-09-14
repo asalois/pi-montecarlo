@@ -3,9 +3,9 @@ import math
 import numpy as np
 from multiprocessing import Pool
 
-procs = 8  # number of cpus
+procs = 5  # number of cpus
 ndarts = 8192  # number of darts
-nthrows = 10_000_000  # number of throws
+nthrows = 100_000  # number of throws
 nsamples = nthrows * ndarts  # total
 
 
