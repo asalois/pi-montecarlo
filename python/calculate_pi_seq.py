@@ -7,9 +7,10 @@ nsamples = nthrows * ndarts  # total number of darts thrown
 
 def monte_carlo_pi():
     hits = 0  # start with no hits
+    rand = random.random
     for i in range(nsamples):
-        x = random.random()
-        y = random.random()
+        x = rand()
+        y = rand()
         if (x*x + y*y) < 1.0:  # if the dart is in the circle
             hits += 1
     return 4.0 * hits / nsamples  # pi is 4 time the ratio
