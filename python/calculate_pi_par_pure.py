@@ -9,10 +9,11 @@ nsamples = nthrows * ndarts  # total
 
 def throw_darts(run):
     hits = 0  # start with no hits
+    rand = random.random
     for i in range(int(ndarts)):
-        x = random.random()
-        y = random.random()
-        if (x**2 + y**2) < 1.0:  # if the dart is in the circle
+        x = rand()
+        y = rand()
+        if (x*x + y*y) < 1.0:  # if the dart is in the circle
             hits += 1
     return hits
 
