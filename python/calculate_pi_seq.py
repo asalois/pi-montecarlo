@@ -11,7 +11,7 @@ def throw_darts(run):
     for i in range(int(ndarts)):
         x = random.random()
         y = random.random()
-        if (x**2 + y**2) < 1.0:  # if the dart is in the circle
+        if (x*x + y*y) < 1.0:  # if the dart is in the circle
             hits += 1
     return hits
 
