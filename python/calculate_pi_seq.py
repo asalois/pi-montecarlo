@@ -5,21 +5,13 @@ ndarts = 8192  # number of darts to per throw
 nthrows = 10_000  # number of throws
 nsamples = nthrows * ndarts  # total number of darts thrown
 
-
-def throw_darts(run):
+def monte_carlo_pi():
     hits = 0  # start with no hits
-    for i in range(int(ndarts)):
+    for i in range(nsamples):
         x = random.random()
         y = random.random()
         if (x*x + y*y) < 1.0:  # if the dart is in the circle
             hits += 1
-    return hits
-
-
-def monte_carlo_pi():
-    hits = 0
-    for i in range(nthrows):
-        hits += throw_darts(i)
     return 4.0 * hits / nsamples  # pi is 4 time the ratio
 
 
